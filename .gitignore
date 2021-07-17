@@ -1,7 +1,10 @@
 *.avi
 *.lwi
 *.mov
+*.mp3
 *.mp4
+*.mts
+*.png
 *.exe
 *.bak
 *.tiff

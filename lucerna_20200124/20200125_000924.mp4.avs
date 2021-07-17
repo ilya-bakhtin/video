@@ -1,0 +1,5 @@
+LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+LSMASHVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200125_000924.mp4")
+ChangeFPS(30, 1)
+Spline64Resize(1920, 1080)
+#ColorYUV(autogain=true)

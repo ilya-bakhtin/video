@@ -1,0 +1,93 @@
+LoadPlugin("D:\Program Files (x86)\MeGUI\tools\lsmash\LSMASHSource.dll")
+v1 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_185418.mp4").AssumeFPS(30,1)
+a1 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_185418.mp4").AssumeFPS(30,1)
+#v1 = AudioDub(v1, a1).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a1.AudioRate*a1.AudioDuration/(v1.FrameCount/v1.FrameRate)
+v1 = AudioDub(v1, a1).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v2 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_190821.mp4").AssumeFPS(30,1)
+a2 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_190821.mp4").AssumeFPS(30,1)
+#v2 = AudioDub(v2, a2).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a2.AudioRate*a2.AudioDuration/(v2.FrameCount/v2.FrameRate)
+v2 = AudioDub(v2, a2).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v3 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_193859.mp4").AssumeFPS(30,1)
+a3 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_193859.mp4").AssumeFPS(30,1)
+#v3 = AudioDub(v3, a3).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a3.AudioRate*a3.AudioDuration/(v3.FrameCount/v3.FrameRate)
+v3 = AudioDub(v3, a3).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v4 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_200226.mp4").AssumeFPS(30,1)
+a4 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_200226.mp4").AssumeFPS(30,1)
+#v4 = AudioDub(v4, a4).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a4.AudioRate*a4.AudioDuration/(v4.FrameCount/v4.FrameRate)
+v4 = AudioDub(v4, a4).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v5 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_202230.mp4").AssumeFPS(30,1)
+a5 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_202230.mp4").AssumeFPS(30,1)
+#v5 = AudioDub(v5, a5).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a5.AudioRate*a5.AudioDuration/(v5.FrameCount/v5.FrameRate)
+v5 = AudioDub(v5, a5).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v6 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_202608.mp4").AssumeFPS(30,1)
+a6 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_202608.mp4").AssumeFPS(30,1)
+#v6 = AudioDub(v6, a6).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a6.AudioRate*a6.AudioDuration/(v6.FrameCount/v6.FrameRate)
+v6 = AudioDub(v6, a6).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v7 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_202840.mp4").AssumeFPS(30,1)
+a7 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_202840.mp4").AssumeFPS(30,1)
+#v7 = AudioDub(v7, a7).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a7.AudioRate*a7.AudioDuration/(v7.FrameCount/v7.FrameRate)
+v7 = AudioDub(v7, a7).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v8 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_203018.mp4").AssumeFPS(30,1)
+a8 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_203018.mp4").AssumeFPS(30,1)
+#v8 = AudioDub(v8, a8).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a8.AudioRate*a8.AudioDuration/(v8.FrameCount/v8.FrameRate)
+v8 = AudioDub(v8, a8).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v9 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_204914.mp4").AssumeFPS(30,1)
+a9 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_204914.mp4").AssumeFPS(30,1)
+#v9 = AudioDub(v9, a9).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a9.AudioRate*a9.AudioDuration/(v9.FrameCount/v9.FrameRate)
+v9 = AudioDub(v9, a9).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v10 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_205034.mp4").AssumeFPS(30,1)
+a10 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_205034.mp4").AssumeFPS(30,1)
+#v10 = AudioDub(v10, a10).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a10.AudioRate*a10.AudioDuration/(v10.FrameCount/v10.FrameRate)
+v10 = AudioDub(v10, a10).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v11 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_205116.mp4").AssumeFPS(30,1)
+a11 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_205116.mp4").AssumeFPS(30,1)
+#v11 = AudioDub(v11, a11).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a11.AudioRate*a11.AudioDuration/(v11.FrameCount/v11.FrameRate)
+v11 = AudioDub(v11, a11).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v12 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_205223.mp4").AssumeFPS(30,1)
+a12 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_205223.mp4").AssumeFPS(30,1)
+#v12 = AudioDub(v12, a12).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a12.AudioRate*a12.AudioDuration/(v12.FrameCount/v12.FrameRate)
+v12 = AudioDub(v12, a12).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v13 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_210208.mp4").AssumeFPS(30,1)
+a13 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_210208.mp4").AssumeFPS(30,1)
+#v13 = AudioDub(v13, a13).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a13.AudioRate*a13.AudioDuration/(v13.FrameCount/v13.FrameRate)
+v13 = AudioDub(v13, a13).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v14 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_212325.mp4").AssumeFPS(30,1)
+a14 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_212325.mp4").AssumeFPS(30,1)
+#v14 = AudioDub(v14, a14).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a14.AudioRate*a14.AudioDuration/(v14.FrameCount/v14.FrameRate)
+v14 = AudioDub(v14, a14).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+v15 = LWLibavVideoSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_212432.mp4").AssumeFPS(30,1)
+a15 = LWLibavAudioSource("d:\Users\ilx\wrk\video\lucerna_20200124\20200124_212432.mp4").AssumeFPS(30,1)
+#v15 = AudioDub(v15, a15).AssumeFPS(30,1, true).ResampleAudio(48000)
+new_rate = a15.AudioRate*a15.AudioDuration/(v15.FrameCount/v15.FrameRate)
+v15 = AudioDub(v15, a15).AssumeSampleRate(Round(new_rate)).AssumeFPS(30,1, true).ResampleAudio(48000)
+
+last = v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10 + v11 + v12 + v13 + v14 + v15
+return last
