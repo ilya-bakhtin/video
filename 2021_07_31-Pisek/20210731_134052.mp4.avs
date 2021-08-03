@@ -1,0 +1,21 @@
+LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+LSMASHVideoSource("d:\Users\ilx\wrk\video\2021_07_31-Pisek\20210731_134052.mp4")
+v1 = last.tweak(sat=1.2, coring=false)
+v2 = autolevels(gamma=0.975, minRng=0).tweak(sat=1.25, coring=false)
+v3 = autolevels(gamma=0.95, minRng=0).tweak(sat=1.3, coring=false)
+v4 = autolevels(gamma=0.925, minRng=0).tweak(sat=1.35, coring=false)
+v5 = autolevels(gamma=0.9, minRng=0).tweak(sat=1.4, coring=false)
+v6 = autolevels(gamma=0.875, minRng=0).tweak(sat=1.45, coring=false)
+v7 = autolevels(gamma=0.85, minRng=0).tweak(sat=1.5, coring=false)
+v8 = autolevels(gamma=0.825, minRng=0).tweak(sat=1.55, coring=false)
+v9 = autolevels(gamma=0.8, minRng=0).tweak(sat=1.6, coring=false)
+v10 = autolevels(gamma=0.775, minRng=0).tweak(sat=1.65, coring=false)
+v11 = autolevels(gamma=0.75, minRng=0).tweak(sat=1.7, coring=false)
+v12 = autolevels(gamma=0.725, minRng=0).tweak(sat=1.75, coring=false)
+v13 = autolevels(gamma=0.7, minRng=0).tweak(sat=1.8, coring=false)
+
+last = v1.trim(0, 9) + v2.trim(10, 19) + v3.trim(20, 29) + v4.trim(30, 39) + v5.trim(40, 49) + v6.trim(50, 59) + v7.trim(60, 69) +\
+       v8.trim(70, 79) + v9.trim(80, 89) + v10.trim(90, 99) + v11.trim(100, 109) + v12.trim(110, 119) + v13.trim(120, 0)
+
+#histogram("levels")
+prefetch(6)

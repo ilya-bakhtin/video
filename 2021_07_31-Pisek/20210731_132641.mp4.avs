@@ -1,0 +1,7 @@
+LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+LSMASHVideoSource("d:\Users\ilx\wrk\video\2021_07_31-Pisek\20210731_132641.mp4")
+autolevels(debug=false, gamma=0.9)
+UnsharpMask(strength=300, radius=2, threshold=1)
+tweak(sat=1.6, coring=false)
+#histogram("levels")
+prefetch(6)
