@@ -19,6 +19,7 @@ v10 = LWLibavVideoSource("d:\Users\ilx\wrk\video\2021_07_31-Pisek\20210731_18170
 v11 = LWLibavVideoSource("d:\Users\ilx\wrk\video\2021_07_31-Pisek\20210731_182049.mp4.avi").AssumeFPS(30,1)
 
 v12 = LWLibavVideoSource("d:\Users\ilx\wrk\video\2021_07_31-Pisek\20210731_182315.mp4.avi").AssumeFPS(30,1)
+v12 = v12.convertToYV24.autolevels(filterRadius=9, gamma=1.3).convertToRGB24
 v12 = v12.trim(42, 0)
 
 v13 = LWLibavVideoSource("d:\Users\ilx\wrk\video\2021_07_31-Pisek\20210731_183324.mp4.avi").AssumeFPS(30,1)
