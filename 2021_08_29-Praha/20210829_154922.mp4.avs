@@ -1,0 +1,6 @@
+LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+LSMASHVideoSource("d:\Users\ilx\wrk\video\2021_08_29-Praha\20210829_154922.mp4")
+trim(180, 0)
+autolevels(ignore_low=0.003, gamma=1.3)
+tweak(sat=1.5)
+#histogram("levels")
