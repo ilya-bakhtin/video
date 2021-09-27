@@ -1,0 +1,4 @@
+LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+LSMASHVideoSource("d:\Users\ilx\wrk\video\2021_09_10-Praha\20210910_194147.mp4")
+autolevels(minRng=0, gamma=1.2).tweak(sat=1.3, coring=false)
+UnsharpMask(strength=300, radius=2, threshold=1)
