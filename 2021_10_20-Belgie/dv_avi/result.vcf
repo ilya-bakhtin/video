@@ -1,0 +1,12 @@
+declare offset_0;
+offset_0 = 0;
+VirtualDub.Open(U"2021_10_20.avi");
+VirtualDub.video.SetMode(0);
+VirtualDub.subset.Clear();
+VirtualDub.subset.AddRange(offset_0 + 0, 3424);
+VirtualDub.subset.AddRange(offset_0 + 3424, 1);
+VirtualDub.subset.AddRange(offset_0 + 3425, 2);
+VirtualDub.subset.AddRange(offset_0 + 3427, 1);
+VirtualDub.subset.AddRange(offset_0 + 3428, 22621);
+VirtualDub.subset.AddRange(offset_0 + 26049, 1);
+VirtualDub.subset.AddRange(offset_0 + 26050, 13285);

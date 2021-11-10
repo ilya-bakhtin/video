@@ -1,0 +1,28 @@
+#LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+
+#timeshift -207
+
+v = LWLibavVideoSource("m:\media\video\2021_10_20-Belgie\dv_avi\2021_10_20-50.avi", format="YUV420P8").\
+    ConvertToYV24(interlaced=true, ChromaInPlacement="DV",  chromaresample = "sinc")
+a = LWLibavAudioSource("m:\media\video\2021_10_20-Belgie\dv_avi\2021_10_20.avi", stream_index=1)
+source = v.AudioDub(a)
+
+function prepareDV(clip v)
+{
+    a = v
+
+    v = v.killAudio()
+    v = v.spline64Resize(1920, 1080)
+    v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+    v = v.convertToYV12()
+    v = v.UnsharpMask(strength=300, radius=1, threshold=1)
+
+    new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
+    a = a.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+
+    v = AudioDub(v, a)
+
+    return v
+}
+
+source.trim($$$start$$$*2, $$$end$$$*2 + 1).prepareDV
