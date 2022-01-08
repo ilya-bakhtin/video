@@ -21,7 +21,7 @@ function prepareOneAV(string video, string audio)
     v = LWLibavVideoSource(video).AssumeFPS(30,1)
     v = v.convertToYV24()
 #v = v.Spline64Resize(640, 360)
-    v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+    v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=50, NewDen=1, blksize=16)
     v = v.convertToYV12()
 
     a = LSMASHAudioSource(audio)
@@ -62,7 +62,7 @@ function prepareDV(clip v, bool "sinc", bool "autolevels", float "ignore_low", f
                v.spline64Resize(1920, 1080)
 
 #v = v.spline64Resize(640, 360)
-    v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+#    v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
     v = v.convertToYV12()
 
     v = v.colorMatrix(mode="Rec.601->Rec.709", clamp=0)
