@@ -1,0 +1,33 @@
+declare source_dir;
+source_dir = "$$$dir$$$";
+
+VirtualDub.audio.SetSource(1);
+VirtualDub.audio.SetMode(0);
+VirtualDub.audio.SetInterleave(1,500,1,0,0);
+VirtualDub.audio.SetClipMode(1,1);
+VirtualDub.audio.SetEditMode(1);
+VirtualDub.audio.SetConversion(0,0,0,0,0);
+VirtualDub.audio.SetVolume();
+VirtualDub.audio.SetCompression();
+VirtualDub.audio.EnableFilterGraph(0);
+VirtualDub.video.SetInputFormat(0);
+VirtualDub.video.SetOutputFormat(7);
+VirtualDub.video.SetMode(3);
+VirtualDub.video.SetSmartRendering(0);
+VirtualDub.video.SetPreserveEmptyFrames(0);
+VirtualDub.video.SetFrameRate2(0,0,1);
+VirtualDub.video.SetIVTC(0, 0, 0, 0);
+VirtualDub.video.SetCompression();
+VirtualDub.video.filters.Clear();
+VirtualDub.video.filters.Add("Deshaker v3.1");
+declare pass1;
+pass1 = "19|1|30|4|1|0|1|0|640|480|0|1|100|100|100|100|4|1|0|2|2|30|300|4|" + source_dir + "$$$clip$$$.log|0|0|0|0|0|0|0|0|0|0|0|0|0|1|15|15|0.0015|0.0015|1|1|30|30|0|0|0|0|1|1|1|10|1000|1|88|1|1|20|5000|100|20|1|0|ff00ff";
+VirtualDub.video.filters.instance[0].Config(pass1);
+VirtualDub.audio.filters.Clear();
+
+declare avs_name;
+avs_name = source_dir + "$$$clip$$$.avs";
+VirtualDub.Open(avs_name);
+VirtualDub.video.SetMode(3);
+
+VirtualDub.RunNullVideoPass();
