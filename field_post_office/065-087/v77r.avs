@@ -1,0 +1,17 @@
+import("..\field_post_office.avs")
+v075_3 = avg.trim(36205, 36228)
+v077 = avg.trim(36253, 36276)
+v079 = avg.trim(36301, 36324)
+v081 = avg.trim(36349, 36372)
+v083 = avg.trim(36397, 36420)
+v085 = avg.trim(36445, 36468)
+v087 = avg.trim(36492, 36515)
+v089 = avg.trim(36540, 36563)
+v091 = avg.trim(36588, 36611)
+v093 = avg.trim(36636, 36659)
+v095 = avg.trim(36684, 36707)
+v097 = avg.trim(36732, 36755)
+v077 = (v075_3+v077+v079+v081+v083+v085+v087+v089+v091+v093+v095+v097)
+v077 = v077.filter(thSAD=400, thSADC=800)
+return v077.prefetch
+#adjustframerate

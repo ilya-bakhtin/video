@@ -1,0 +1,10 @@
+declare source_dir;
+source_dir = "d:\\Users\\ilx\\wrk\\video\\field_post_office\\001-032\\";
+
+declare output_dir;
+output_dir = "K:\\Media\\Video\\tmp\\";
+
+VirtualDub.Open(source_dir + "v8r.avs");
+VirtualDub.video.SetMode(0);
+VirtualDub.SaveAVI(output_dir + "v8cf.avi");
+
