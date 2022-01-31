@@ -21,7 +21,7 @@ VirtualDub.video.SetCompression();
 VirtualDub.video.filters.Clear();
 VirtualDub.video.filters.Add("Deshaker v3.1");
 declare pass1;
-pass1 = "19|1|30|4|1|0|1|0|640|480|0|1|1000|1000|1000|1000|1|1|1|2|8|30|300|4|" + source_dir + "20211106_143023.mp4.log|0|1|50|50|25|25|0|0|0|0|0|0|0|1|15|15|5|15|1|1|30|30|0|0|1|0|1|1|1|10|1000|1|88|1|1|20|5000|100|20|1|0|ff00ff";
+pass1 = "19|1|30|4|1|0|1|0|640|480|0|1|1000|1000|1000|1000|1|1|0|2|8|30|300|4|" + source_dir + "20211106_143023.mp4.log|0|1|50|50|25|25|0|0|0|0|0|0|0|1|15|15|5|15|1|1|30|30|0|0|1|0|1|1|1|10|1000|1|88|1|1|20|5000|100|20|1|0|ff00ff";
 VirtualDub.video.filters.instance[0].Config(pass1);
 VirtualDub.audio.filters.Clear();
 
@@ -35,7 +35,7 @@ VirtualDub.RunNullVideoPass();
 VirtualDub.video.filters.Clear();
 VirtualDub.video.filters.Add("Deshaker v3.1");
 declare pass2;
-pass2 = "19|2|30|4|1|0|1|0|640|480|0|1|1000|1000|1000|1000|1|1|1|2|8|30|300|4|" + source_dir + "20211106_143023.mp4.log|0|1|50|50|25|25|0|0|0|0|0|0|0|1|15|15|5|15|1|1|30|30|0|0|1|0|1|1|1|10|1000|1|88|1|1|20|5000|100|20|1|0|ff00ff";
+pass2 = "19|2|30|4|1|0|1|0|640|480|0|1|1000|1000|1000|1000|1|1|0|2|8|30|300|4|" + source_dir + "20211106_143023.mp4.log|0|1|50|50|25|25|0|0|0|0|0|0|0|1|15|15|5|15|1|1|30|30|0|0|1|0|1|1|1|10|1000|1|88|1|1|20|5000|100|20|1|0|ff00ff";
 VirtualDub.video.filters.instance[0].Config(pass2);
 
 declare avi_name;
