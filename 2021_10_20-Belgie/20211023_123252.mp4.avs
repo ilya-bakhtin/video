@@ -1,3 +1,5 @@
+import("m:\Media\video\2021_10_20-Belgie\common.avs")
+
 LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
-LSMASHVideoSource("m:\Media\video\2021_10_20-Belgie\test\20211023_123252.mp4")
-#ColorYUV(autogain=true)
+LSMASHVideoSource(source_dir + "20211023_123252.mp4")
+convertToRGB24(interlaced=false, matrix="PC.709")

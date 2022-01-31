@@ -29,5 +29,5 @@ VirtualDub.video.filters.Clear();
 VirtualDub.video.filters.Add("Deshaker v3.1");
 VirtualDub.video.filters.instance[0].Config("19|2|30|4|1|0|1|0|640|480|0|1|1000|1000|1000|1000|1|1|1|2|8|30|300|4|$$$clip$$$.log|0|1|50|50|25|25|0|0|0|0|0|0|0|1|15|15|5|15|1|1|30|30|0|0|1|0|1|1|1|10|1000|1|88|1|1|20|5000|100|20|1|0|ff00ff");
 
-VirtualDub.SaveAVI(U"$$$clip$$$.avi");
+VirtualDub.SaveAVI(U"m:\\media\\video\\2021_10_20-Belgie\\$$$clip$$$.avi");
 

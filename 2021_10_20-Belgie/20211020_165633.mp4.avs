@@ -1,3 +1,5 @@
+import("m:\Media\video\2021_10_20-Belgie\common.avs")
+
 function AdjustFrameRate(clip c, string "preset_p", string "output_p", int "blksize_p")
 {
     preset_p = Default(preset_p, "Slow")
@@ -14,7 +16,7 @@ function gamma(clip c, int gamma)
 }
 
 LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
-LSMASHVideoSource("m:\Media\video\2021_10_20_Belgie\20211020_165633.mp4")
+LSMASHVideoSource(source_dir + "20211020_165633.mp4")
 assumeFPS(30)
 #info
 
@@ -86,4 +88,5 @@ v3 = Animate(1271, 1453, "gamma", 700000, 2000000)
 last = v1.trim(0, 1122) + v2.trim(1123, 1270) + v3.trim(1271, 0)
 tweak(sat=2, coring = false)
 #histogram("levels")
+convertToRGB24(interlaced=false, matrix="PC.709")
 Prefetch(6)

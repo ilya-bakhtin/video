@@ -1,3 +1,5 @@
+import("m:\Media\video\2021_10_20-Belgie\common.avs")
+
 function AdjustFrameRate(clip c, string "preset_p", string "output_p", int "blksize_p")
 {
     preset_p = Default(preset_p, "Slow")
@@ -9,7 +11,7 @@ function AdjustFrameRate(clip c, string "preset_p", string "output_p", int "blks
 }
 
 LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
-LSMASHVideoSource("m:\Media\video\2021_10_20-Belgie\test\20211020_183724.mp4")
+LSMASHVideoSource(source_dir + "20211020_183724.mp4")
 assumeFPS(30)
 #info
 #return last
@@ -55,4 +57,5 @@ last = trim(0, 175) + v176 + trim(178, 184) +\
                       v252 + trim(254, 328) +\
                       v329 + trim(331, 0)
 
+convertToRGB24(interlaced=false, matrix="PC.709")
 Prefetch(6)
