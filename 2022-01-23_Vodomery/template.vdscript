@@ -1,0 +1,8 @@
+declare source_dir;
+source_dir = "$$$dir$$$";
+
+declare output_dir;
+
+VirtualDub.Open(source_dir + "$$$clip$$$.avs");
+VirtualDub.video.SetMode(0);
+VirtualDub.SaveAVI(source_dir + "$$$clip$$$.avi");

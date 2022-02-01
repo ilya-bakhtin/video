@@ -1,0 +1,9 @@
+declare source_dir;
+source_dir = "d:\\Users\\ilx\\wrk\\video\\2022-01-23_Vodomery\\";
+
+declare output_dir;
+
+VirtualDub.Open(source_dir + "20220123_115814.mp4.avs");
+VirtualDub.video.SetMode(0);
+VirtualDub.SaveAVI(source_dir + "20220123_115814.mp4.avi");
+
