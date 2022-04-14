@@ -83,5 +83,53 @@ new_rate = Float(a14.AudioLength)/v14.FrameCount*v14.FrameRateNumerator/v14.Fram
 a14 = a14.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
 v14 = AudioDub(v14, a14)
 
-last = v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10 + v11 + v12 + v13 + v14
+a15 = LSMASHAudioSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220116_130459.mp4")
+v15 = LSMASHVideoSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220116_130459.mp4").AssumeFPS(30,1)
+new_rate = Float(a15.AudioLength)/v15.FrameCount*v15.FrameRateNumerator/v15.FrameRateDenominator
+a15 = a15.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v15 = AudioDub(v15, a15)
+
+a16 = LSMASHAudioSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220116_131057.mp4")
+v16 = LSMASHVideoSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220116_131057.mp4").AssumeFPS(30,1)
+new_rate = Float(a16.AudioLength)/v16.FrameCount*v16.FrameRateNumerator/v16.FrameRateDenominator
+a16 = a16.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v16 = AudioDub(v16, a16)
+
+a17 = LSMASHAudioSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220118_150140.mp4")
+v17 = LSMASHVideoSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220118_150140.mp4").AssumeFPS(30,1)
+new_rate = Float(a17.AudioLength)/v17.FrameCount*v17.FrameRateNumerator/v17.FrameRateDenominator
+a17 = a17.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v17 = AudioDub(v17, a17)
+
+a18 = LSMASHAudioSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\VID_20220118_155028.mp4")
+v18 = LSMASHVideoSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\VID_20220118_155028.mp4").AssumeFPS(30,1)
+new_rate = Float(a18.AudioLength)/v18.FrameCount*v18.FrameRateNumerator/v18.FrameRateDenominator
+a18 = a18.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v18 = AudioDub(v18, a18)
+
+a19 = LSMASHAudioSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220119_111945.mp4")
+v19 = LSMASHVideoSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220119_111945.mp4").AssumeFPS(30,1)
+new_rate = Float(a19.AudioLength)/v19.FrameCount*v19.FrameRateNumerator/v19.FrameRateDenominator
+a19 = a19.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v19 = AudioDub(v19, a19)
+
+a20 = LSMASHAudioSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220120_124143.mp4")
+v20 = LSMASHVideoSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220120_124143.mp4").AssumeFPS(30,1)
+new_rate = Float(a20.AudioLength)/v20.FrameCount*v20.FrameRateNumerator/v20.FrameRateDenominator
+a20 = a20.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v20 = AudioDub(v20, a20)
+
+a21 = LSMASHAudioSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220120_124225.mp4")
+v21 = LSMASHVideoSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220120_124225.mp4").AssumeFPS(30,1)
+new_rate = Float(a21.AudioLength)/v21.FrameCount*v21.FrameRateNumerator/v21.FrameRateDenominator
+a21 = a21.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v21 = AudioDub(v21, a21)
+
+a22 = LSMASHAudioSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220121_134313.mp4")
+v22 = LSMASHVideoSource("d:\Users\ilx\wrk\video\2022_01_15-Karlovy_vary\20220121_134313.mp4").AssumeFPS(30,1)
+new_rate = Float(a22.AudioLength)/v22.FrameCount*v22.FrameRateNumerator/v22.FrameRateDenominator
+a22 = a22.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v22 = AudioDub(v22, a22)
+
+last = v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10 + v11 + v12 + v13 + v14 + v15 + v16 + v17 + v18 + v19 + v20 + v21 + v22
 return last
