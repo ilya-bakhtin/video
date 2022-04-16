@@ -37,20 +37,19 @@ function prepareOneAV(string video, string audio)
 
 #timeshift -207
 
-v = LWLibavVideoSource("m:\media\video\2021_10_20-Belgie\dv_avi\2021_10_20-50.avi", format="YUV420P8").\
-    ConvertToYV24(interlaced=true, ChromaInPlacement="DV",  chromaresample = "sinc")
+v = LWLibavVideoSource("m:\media\video\2021_10_20-Belgie\dv_avi\2021_10_20-50.avi")
 a = LWLibavAudioSource("m:\media\video\2021_10_20-Belgie\dv_avi\2021_10_20.avi", stream_index=1)
 source = v.AudioDub(a)
 
 function prepareDV(clip v, bool "sinc", bool "autolevels", float "ignore_low", float "ignore_high",\
                    float "gamma", int "radius", int "sharp")
 {
-    sinc = Default(sinc, true)
+    sinc = Default(sinc, false)
     autolevels = Default(autolevels, false)
     ignore_low = Default(ignore_low, 0.0003)
     ignore_high = Default(ignore_high, 0.0003)
     gamma = Default(gamma, 1)
-    sharp = Default(sharp, 900)
+    sharp = Default(sharp, 300)
 
     a = v
 
@@ -67,7 +66,7 @@ function prepareDV(clip v, bool "sinc", bool "autolevels", float "ignore_low", f
 
     v = v.colorMatrix(mode="Rec.601->Rec.709", clamp=0)
 
-    v = v.UnsharpMask(strength=sharp, radius=1, threshold=1)
+    v = v.UnsharpMask(strength=sharp, radius=3, threshold=1)
 #    v = v.UnsharpMask(strength=300, radius=1, threshold=1)
 
     new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
@@ -112,7 +111,7 @@ v23 = v23.tweak(sat=1.3, coring=false).colorYUV(off_u = 4, off_v = -2)
 v23 = v23.grainFactory3
 
 v24 = source.trim(878*2,  1023*2 + 1).prepareDV(autolevels = true, ignore_low = 0.0005, ignore_high = 0.009)
-#v24_ = source.trim(878*2,  1023*2 + 1).prepareDV(sinc = true, autolevels = true, ignore_low = 0.0005, ignore_high = 0.009)
+#v24_ = source.trim(878*2,  1023*2 + 1).prepareDV(autolevels = true, ignore_low = 0.0005, ignore_high = 0.009)
 #v24 = v24.interleave(v24_).assumeFPS(50)
 v24 = v24.tweak(sat=1.3, coring=false).colorYUV(off_u = 4, off_v = -2)
 v24 = v24.grainFactory3

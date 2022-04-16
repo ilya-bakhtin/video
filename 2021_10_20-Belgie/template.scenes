@@ -2,20 +2,37 @@
 
 #timeshift -207
 
-v = LWLibavVideoSource("m:\media\video\2021_10_20-Belgie\dv_avi\2021_10_20-50.avi", format="YUV420P8").\
-    ConvertToYV24(interlaced=true, ChromaInPlacement="DV",  chromaresample = "sinc")
+v = LWLibavVideoSource("m:\media\video\2021_10_20-Belgie\dv_avi\2021_10_20-50.avi")
 a = LWLibavAudioSource("m:\media\video\2021_10_20-Belgie\dv_avi\2021_10_20.avi", stream_index=1)
 source = v.AudioDub(a)
 
-function prepareDV(clip v)
+function prepareDV(clip v, bool "sinc", bool "autolevels", float "ignore_low", float "ignore_high",\
+                   float "gamma", int "radius", int "sharp")
 {
+    sinc = Default(sinc, false)
+    autolevels = Default(autolevels, false)
+    ignore_low = Default(ignore_low, 0.0003)
+    ignore_high = Default(ignore_high, 0.0003)
+    gamma = Default(gamma, 1)
+    sharp = Default(sharp, 300)
+
     a = v
 
     v = v.killAudio()
-    v = v.spline64Resize(1920, 1080)
-    v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+
+    v = autolevels ? v.autolevels(minRng = 0, ignore_low = ignore_low, ignore_high = ignore_high, gamma=gamma, filterRadius=radius) : v
+#v=v.histogram("levels")
+    v = sinc ? v.sincResize(1920, 1080) :\
+               v.spline64Resize(1920, 1080)
+
+#v = v.spline64Resize(640, 360)
+#    v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
     v = v.convertToYV12()
-    v = v.UnsharpMask(strength=300, radius=1, threshold=1)
+
+    v = v.colorMatrix(mode="Rec.601->Rec.709", clamp=0)
+
+    v = v.UnsharpMask(strength=sharp, radius=3, threshold=1)
+#    v = v.UnsharpMask(strength=300, radius=1, threshold=1)
 
     new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
     a = a.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
