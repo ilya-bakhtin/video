@@ -1,0 +1,5 @@
+"D:\Program Files\MeGUI\tools\x264\x264.exe" --qp 0 --keyint 30 --sar 1:1 --output "$$$dir$$$result\$$$clip_name$$$.264" "$$$clip_c$$$-1.avs"
+"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "$$$dir$$$result\$$$clip_name$$$.264#trackID=1:fps=60:par=1:1:name=" -tmp "$$$dir_ds$$$result\\" -new "$$$dir$$$result\$$$clip_name$$$.mp4"
+del "$$$dir$$$result\$$$clip_name$$$.264"
+rem "D:\Program Files\MeGUI\tools\ffmpeg\ffmpeg.exe" -i "$$$clip$$$-1.avs" -y -acodec ac3 -ab 384k "$$$clip$$$.ac3"
+rem "D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "$$$clip$$$.264#trackID=1:fps=60.0:par=1:1:name=" -add "$$$clip$$$.ac3#trackID=1:name=" -tmp "$$$dir_ds$$$" -new "$$$clip$$$.mp4"

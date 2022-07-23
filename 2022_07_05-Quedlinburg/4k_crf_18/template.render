@@ -1,0 +1,6 @@
+"D:\Program Files\MeGUI\tools\x264\x264.exe" --crf 18.0 --keyint 600 --sar 1:1 --output "$$$dir_d$$$result\4k_crf_18\$$$clip_name$$$.264" "$$$clip_c$$$.avs"
+rem "D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "$$$dir$$$result\$$$clip_name$$$.264#trackID=1:fps=60:par=1:1:name=" -tmp "$$$dir_ds$$$result\\" -new "$$$dir$$$result\4k_crf_18\$$$clip_name$$$.mp4"
+"D:\Program Files\MeGUI\tools\ffmpeg\ffmpeg.exe" -i "$$$clip_c$$$.avs" -y -acodec ac3 -ab 384k "$$$dir_d$$$result\4k_crf_18\$$$clip_name$$$.ac3"
+"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "$$$dir_d$$$result\4k_crf_18\$$$clip_name$$$.264#trackID=1:fps=60.0:par=1:1:name=" -add "$$$dir_d$$$result\4k_crf_18\$$$clip_name$$$.ac3#trackID=1:name=" -tmp "$$$dir_ds$$$result\\4k_crf_18\\" -new "$$$dir$$$result\4k_crf_18\$$$clip_name$$$"
+del "$$$dir$$$result\4k_crf_18\$$$clip_name$$$.264"
+del "$$$dir$$$result\4k_crf_18\$$$clip_name$$$.ac3"

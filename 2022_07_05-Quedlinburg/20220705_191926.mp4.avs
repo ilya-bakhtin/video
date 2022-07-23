@@ -1,0 +1,6 @@
+import("d:\Users\ilx\wrk\video\2022_07_05-Quedlinburg\common.avs")
+
+LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+LSMASHVideoSource(destination_dir + "20220705_191926.mp4")
+#convertToYV24(interlaced=false)
+convertToRGB32(interlaced=false, matrix="Rec709")
