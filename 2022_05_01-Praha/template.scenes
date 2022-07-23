@@ -1,0 +1,47 @@
+#timeshift -100
+
+v = LWLibavVideoSource("m:\media\video\2022_05_01_Praha\dv_avi\2022_05_01_Praha-50.avi")
+a = LWLibavAudioSource("m:\media\video\2022_05_01_Praha\dv_avi\2022_05_01_Praha.avi", stream_index=1)
+v = v.spline64Resize(1920, 1080)
+v = v.stabilize("M:\Media\video\2022_05_01_Praha\dv_avi\2022_05_01_Praha-50-1920.log")
+source = v.AudioDub(a)
+
+function prepareDV(clip v, bool "sinc", bool "autolevels", float "ignore_low", float "ignore_high",\
+                   float "gamma", int "radius", int "sharp")
+{
+#    sinc = Default(sinc, false)
+    autolevels = Default(autolevels, true)
+    ignore_low = Default(ignore_low, 0.0003)
+    ignore_high = Default(ignore_high, 0.0003)
+    gamma = Default(gamma, 1)
+    sharp = Default(sharp, 300)
+
+    a = v
+
+    v = v.killAudio()
+
+    v = autolevels ? v.autolevels(minRng = 0, ignore_low = ignore_low, ignore_high = ignore_high, gamma=gamma, filterRadius=radius) : v
+    v = v.tweak(sat=1.3)
+#v=v.histogram("levels")
+#    v = sinc ? v.sincResize(1920, 1080) :\
+#               v.spline64Resize(1920, 1080)
+
+#v = v.spline64Resize(640, 360)
+    v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+    v = v.convertToYV12()
+
+    v = v.colorMatrix(mode="Rec.601->Rec.709", clamp=0)
+
+    v = v.UnsharpMask(strength=sharp, radius=1, threshold=1)
+#v = v1.interleave(v)
+#    v = v.grainFactory3
+
+    new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
+    a = a.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+
+    v = AudioDub(v, a)
+
+    return v
+}
+
+source.trim($$$start$$$*2, $$$end$$$*2 + 1).prepareDV

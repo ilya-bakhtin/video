@@ -1,0 +1,7 @@
+"D:\Program Files\MeGUI\tools\x264\x264.exe" --crf 18.0 --keyint 600 --sar 1:1 --output "M:\Media\video\2022_05_01_Praha\video.264" "D:\Users\ilx\wrk\video\2022_05_01_Praha\video.avs"
+"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "M:\Media\video\2021_10_20-Belgie\video.264#trackID=1:fps=60:par=1:1:name=" -tmp "M:\\Media\\video\\2021_10_20-Belgie" -new "M:\Media\video\2021_10_20-Belgie\video.mp4"
+"D:\Program Files\MeGUI\tools\ffmpeg\ffmpeg.exe" -i "D:\Users\ilx\wrk\video\2022_05_01_Praha\video.avs" -y -acodec ac3 -ab 384k "M:\Media\video\2022_05_01_Praha\video.ac3"
+"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "M:\Media\video\2021_10_20-Belgie\video.mp4#trackID=1:fps=60.0:par=1:1:name=" -add "M:\Media\video\2021_10_20-Belgie\video.ac3#trackID=1:name=" -tmp "M:\\Media\\video\\2021_10_20-Belgie" -new "M:\Media\video\2021_10_20-Belgie\2021_10_20-Belgie.mp4"
+
+# 50 hz, direct mux from 264
+"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "M:\Media\video\2022_05_01_Praha\video.264#trackID=1:fps=50.0:par=1:1:name=" -add "M:\Media\video\2022_05_01_Praha\video.ac3#trackID=1:name=" -tmp "M:\\Media\\video\\2022_05_01_Praha" -new "M:\Media\video\2022_05_01_Praha\2022_05_01_Praha.mp4"

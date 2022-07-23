@@ -1,0 +1,6 @@
+declare offset_0;
+offset_0 = 0;
+VirtualDub.Open(U"2022_05_01_Praha.avi");
+VirtualDub.video.SetMode(0);
+VirtualDub.subset.Clear();
+VirtualDub.subset.AddRange(offset_0 + 0, 16677);
