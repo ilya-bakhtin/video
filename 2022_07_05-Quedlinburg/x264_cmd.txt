@@ -1,7 +1,9 @@
+"cmd.exe" /c ""D:\Program Files\MeGUI\tools\ffmpeg\ffmpeg.exe" -loglevel level+error -i  "d:\Users\ilx\wrk\video\2022_07_05-Quedlinburg\20220705_183507.mp4-1.avs" -strict -1 -f yuv4mpegpipe - | "D:\Program Files\MeGUI\tools\x265\vs2019\x265.exe" --fps 60 --input-res 3840x2160 --lossless --preset=slow --sar 1:1 -o "m:\Media\video\2022_07_05-Quedlinburg\result\20220705_183507.mp4.265" --y4m -"
+
 "D:\Program Files\MeGUI\tools\x264\x264.exe" --crf 21.0 --keyint 600 --sar 1:1 --output "M:\Media\video\2022_07_05-Quedlinburg\result\video.264" "d:\users\ilx\wrk\video\2022_07_05-Quedlinburg\video.avs"
 #"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "M:\Media\video\2022_07_05-Quedlinburg\result\video.264#trackID=1:fps=60:par=1:1:name=" -tmp "M:\\Media\\video\\2022_07_05-Quedlinburg\\result\\" -new "M:\Media\video\2022_07_05-Quedlinburg\result\video.mp4"
-"D:\Program Files\MeGUI\tools\ffmpeg\ffmpeg.exe" -i "M:\Media\video\2022_07_05-Quedlinburg\video.avs" -y -acodec ac3 -ab 384k "M:\Media\video\2022_07_05-Quedlinburg\video.ac3"
+"D:\Program Files\MeGUI\tools\ffmpeg\ffmpeg.exe" -i "d:\users\ilx\wrk\video\2022_07_05-Quedlinburg\video.avs" -y -acodec ac3 -ab 384k "M:\Media\video\2022_07_05-Quedlinburg\video.ac3"
 #"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "M:\Media\video\2022_07_05-Quedlinburg\video.mp4#trackID=1:fps=60.0:par=1:1:name=" -add "M:\Media\video\2022_07_05-Quedlinburg\video.ac3#trackID=1:name=" -tmp "M:\\Media\\video\\2022_07_05-Quedlinburg" -new "M:\Media\video\2022_07_05-Quedlinburg\2022_07_05-Quedlinburg.mp4"
 
 # 60 hz, direct mux from 264
-"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "M:\Media\video\2022_07_05-Quedlinburg\video.264#trackID=1:fps=60.0:par=1:1:name=" -add "M:\Media\video\2022_07_05-Quedlinburg\video.ac3#trackID=1:name=" -tmp "M:\\Media\\video\\2022_07_05-Quedlinburg" -new "M:\Media\video\2022_07_05-Quedlinburg\2022_07_05-Quedlinburg.mp4"
+"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "M:\Media\video\2022_07_05-Quedlinburg\result\video.264#trackID=1:fps=60.0:par=1:1:name=" -add "M:\Media\video\2022_07_05-Quedlinburg\video.ac3#trackID=1:name=" -tmp "M:\\Media\\video\\2022_07_05-Quedlinburg" -new "M:\Media\video\2022_07_05-Quedlinburg\2022_07_05-Quedlinburg.mp4"
