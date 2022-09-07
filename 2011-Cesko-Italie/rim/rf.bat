@@ -1,0 +1,12 @@
+SET dir=%1
+SET dir_ds=%dir:\=\\%
+SET dir_f=%dir:m:\=f:\%
+SET dir_f_ds=%dir_f:\=\\%
+
+"cmd.exe" /c ""D:\Program Files\MeGUI\tools\ffmpeg\ffmpeg.exe" -loglevel level+error -i "%2.avs" -strict -1 -f yuv4mpegpipe - | "D:\Program Files\MeGUI\tools\x265\vs2019\x265.exe" --crf 21 --preset=slow --sar 1:1 -o "%dir%\%2.265" --y4m -"
+
+rem "D:\Program Files\MeGUI\tools\x264\x264.exe" --profile high444 --level 41 --output-csp i444 --qp 0 --keyint 30 --sar 1:1 --output "%dir%\%2.264" "%2.avs"
+rem "D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "%dir%\%2.264#trackID=1:fps=50.0:par=1:1:name=" -tmp "%dir_f_ds%" -new "%1\%2.qtgmc.mp4"
+
+"D:\Program Files\MeGUI\tools\ffmpeg\ffmpeg.exe" -i "%2.avs" -y -acodec ac3 -ab 384k "%dir%\%2.ac3"
+"D:\Program Files\MeGUI\tools\mp4box\mp4box.exe" -add "%dir%\%2.265#trackID=1:fps=50.0:par=1:1:name=" -add "%dir%\%2.ac3#trackID=1:name=" -tmp "%dir_f_ds%" -new "%dir%\%2.mp4"
