@@ -2,7 +2,7 @@ import("d:\Users\ilx\wrk\video\2022_07_06-Luneburg\common.avs")
 
 SetFilterMTMode("Deshaker", MT_SERIALIZED)
 
-LoadVirtualdubPlugin("D:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "Deshaker", preroll=30)
+#LoadVirtualdubPlugin("D:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "Deshaker", preroll=30)
 
 function prepareOneAV(string log, string video)
 {
@@ -11,7 +11,12 @@ function prepareOneAV(string log, string video)
     v = v.assumeFPS(fps60 ? 60 : 30, 1)
 
     v = v.width == 3840 ? v : v.spline64Resize(3840, 2160)
-
+    v = v.trim(0, 240) +\
+       v.animate(241, 242, "spline64Resize", 3840, 2160, 16*49, 9*49, 3840-16*98, 2160-9*98, 3840, 2160, 16*56, 9*56, 3840-16*112, 2160-9*112).trim(241, 242) +\
+       v.spline64Resize(3840, 2160, 16*54, 9*54, 3840-16*108, 2160-9*108).trim(243, 243) +\
+       v.animate(244, 271, "spline64Resize", 3840, 2160, 16*54, 9*54, 3840-16*108, 2160-9*108, 3840, 2160, 0, 0, 3840, 2160).trim(244, 271) +\
+       v.trim(272, 0)
+/*
     v = v.convertToRGB32(interlaced=false, matrix="PC.709")
     v = v + v.loop(30, 0, 0).trim(0, 29)
 
@@ -24,7 +29,7 @@ function prepareOneAV(string log, string video)
     v = v.Deshaker(config).trim(30, 0)
     
     v = v.convertToYV24(interlaced=false, matrix="PC.709")
-
+*/
     v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
     v = v.convertToYV12()
 

@@ -11,6 +11,14 @@ function prepareOneAV(string log, string video)
     v = v.assumeFPS(fps60 ? 60 : 30, 1)
 
     v = v.width == 3840 ? v : v.spline64Resize(3840, 2160)
+    v = \
+        v.trim(0, 214) +\
+        v.animate(215, 216, "spline64Resize", 3840, 2160, 16*8, 9*8, 3840-16*16, 2160-9*16, 3840, 2160, 0, 0, 3840, 2160).trim(215, 216) +\
+        v.trim(217, 223) +\
+        v.animate(224, 225, "spline64Resize", 3840, 2160, 16*10, 9*10, 3840-16*20, 2160-9*20, 3840, 2160, 0, 0, 3840, 2160).trim(224, 225) +\
+        v.trim(226, 356) +\
+        v.animate(357, 375, "spline64Resize", 3840, 2160, 16*50, 9*50, 3840-16*110, 2160-9*110, 3840, 2160, 0, 0, 3840, 2160).trim(357, 375) +\
+        v.trim(376, 0)
 
     v = v.convertToRGB32(interlaced=false, matrix="PC.709")
     v = v + v.loop(30, 0, 0).trim(0, 29)

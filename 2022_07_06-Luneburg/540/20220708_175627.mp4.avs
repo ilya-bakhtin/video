@@ -1,6 +1,6 @@
 import("d:\Users\ilx\wrk\video\2022_07_06-Luneburg\540\common.avs")
 
-v = LSMASHVideoSource(destination_dir + "result\" + "20220708_175627.mp4" + ".mp4")
+v = LSMASHVideoSource(destination_dir + "result\4k_crf_18\" + "20220708_175627.mp4")
 v = v.spline64Resize(960, 540)
 
 a = LSMASHAudioSource(destination_dir + "20220708_175627.mp4")
