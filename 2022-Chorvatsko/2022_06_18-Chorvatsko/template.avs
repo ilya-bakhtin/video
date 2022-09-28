@@ -1,0 +1,5 @@
+LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+LSMASHVideoSource($$$clip$$$)
+convertToYV24(interlaced=false)
+#spline64Resize(1920, 1080)
+convertToRGB24(interlaced=false, matrix="PC.709")

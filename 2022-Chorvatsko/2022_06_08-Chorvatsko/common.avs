@@ -1,0 +1,1 @@
+global source_dir = "\\seiki5\m\media\video\2022_06_08-Chorvatsko\"
