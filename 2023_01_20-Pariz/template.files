@@ -1,0 +1,18 @@
+SetFilterMTMode("Deshaker", MT_SERIALIZED)
+
+function prepareOneAV(string name, bool "autolevels", float "sat")
+{
+    autolevels = Default(autolevels, false)
+    sat = Default(sat, 1.0)
+
+    v = LSMASHVideoSource($$$dir_d$$$ + "result\" + name + ".mp4")
+    a = LSMASHAudioSource($$$dir_d$$$ + name)
+    new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
+    a = a.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+
+    v = AudioDub(v, a)
+
+    return v
+}
+
+prepareOneAV($$$clip_name$$$)
