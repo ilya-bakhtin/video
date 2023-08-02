@@ -1,0 +1,26 @@
+SetFilterMTMode("Deshaker", MT_SERIALIZED)
+
+#LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+
+LoadVirtualdubPlugin("D:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "Deshaker", preroll=30)
+
+function prepareOneAV(string name, bool "autolevels", float "sat")
+{
+    autolevels = Default(autolevels, false)
+    sat = Default(sat, 1.0)
+
+    v = LSMASHVideoSource($$$dir_d$$$ + "result\" + name + ".mp4")
+
+    a = LSMASHAudioSource($$$dir_d$$$ + name)
+    va = LSMASHVideoSource($$$dir_d$$$ + name).AssumeFps(30)
+    a = audioDub(va, a).trim(1, 0).killVideo
+    new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
+    a = a.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+    a = a.fadeIn(4800, fps = 48000).fadeOut(4800, fps = 48000)
+
+    v = AudioDub(v, a)
+
+    return v
+}
+
+prepareOneAV($$$clip_name$$$)
