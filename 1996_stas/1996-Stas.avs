@@ -99,7 +99,10 @@ v1 = v1.spline64Resize(1480, 1080)
 v1 = v1.convertToYV12
 
 v = v.spline64Resize(1440, 1080)
-v = v.convertToYV12
+v = v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+v = v.convertToYV12()
+
+v = v.colorMatrix(mode="Rec.601->Rec.709", clamp=0)
 
 v1 = v1.unsharpMask(strength=400, radius=3, threshold=1)
 v =  v.unsharpMask(strength=400, radius=3, threshold=1)#.grainFactory3
