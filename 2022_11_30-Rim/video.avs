@@ -1,10 +1,4 @@
-import("d:\Users\ilx\wrk\video\2022_11_30-Rim\common.avs")
-
-SetFilterMTMode("Deshaker", MT_SERIALIZED)
-
-#LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
-
-LoadVirtualdubPlugin("D:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "Deshaker", preroll=30)
+import("c:\Users\ilx\wrk\video\2022_11_30-Rim\common.avs")
 
 function prepareOneAV(string name, bool "autolevels", float "sat")
 {
