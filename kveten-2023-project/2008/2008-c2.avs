@@ -11,7 +11,7 @@ v2008_2 = v2008_2.filter(thSAD = 100, thSADC = 200)
 v2008_2 = v2008_2.deinterlace(sharp_strength = 200, sharp_radius = 3)
 
 #v2008_2 = v0.interleave(v2008_1)
-#v2008_2 = v2008_2.spline64Resize(v2008_2.width/2, v2008_2.height/2)
+v2008_2 = v2008_2.spline64Resize(v2008_2.width/2, v2008_2.height/2)
 
 return v2008_2.prefetch
 

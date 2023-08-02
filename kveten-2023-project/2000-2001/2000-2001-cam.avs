@@ -5,8 +5,8 @@ vorg = vorg.AudioDub(aorg.GetChannel(1))
 #return vorg
 
 v2000_2001_1 = vorg.trim(5326, 14136)
-return v2000_2001_1.qtgmc(preset = "placebo").crop(12, 2, -6, -10).spline64Resize(1470, 1080).prefetch
-#return v2000_2001_1.bob.crop(12, 2, -6, -10).spline64Resize(1470, 1080).prefetch
+return v2000_2001_1.qtgmc(preset = "fast").crop(12, 2, -6, -10).spline64Resize(1470, 1080).prefetch
+return v2000_2001_1.bob.crop(12, 2, -6, -10).spline64Resize(1470, 1080).prefetch
 #W = H * (720 - (crop_l + crop_r)) / (576 - (crop_t + crop_b)) * 768 / 702
 #W = 1080 * (720 - (12 + 6)) / (576 - (2 + 10)) * 768 / 702 == 1470
 

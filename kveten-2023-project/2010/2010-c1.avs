@@ -11,8 +11,8 @@ v2010_1 = v2010_1.filter(thSAD = 100, thSADC = 200)
 v2010_1 = v2010_1.deinterlace(sharp_strength = 200, sharp_radius = 3)
 
 #v2010_1 = v0.interleave(v2010_1)
-#v2010_1 = v2010_1.spline64Resize(960, 540)
+v2010_1 = v2010_1.spline64Resize(960, 540)
 
-return v2010_1.prefetch(6)
+return v2010_1.prefetch
 
 #W = H * (720 - (crop_l + crop_r)) / (576 - (crop_t + crop_b)) * 768 / 702
