@@ -6,7 +6,7 @@ LoadVirtualdubPlugin("c:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "D
 
 function prepareOneAV(string log, string video)
 {
-    v = LSMASHVideoSource(video)
+    v = LSMASHVideoSource(video).autolevels
     fps60 = v.frameRate > 40
     v = v.assumeFPS(fps60 ? 60 : 30, 1)
 

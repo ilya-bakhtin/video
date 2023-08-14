@@ -7,6 +7,7 @@ LoadVirtualdubPlugin("c:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "D
 function prepareOneAV(string log, string video)
 {
     v = LSMASHVideoSource(video)
+
     fps60 = v.frameRate > 40
     v = v.assumeFPS(fps60 ? 60 : 30, 1)
 
@@ -32,8 +33,28 @@ function prepareOneAV(string log, string video)
 
     v = AudioDub(v, a)
 
+    v = (v.trim(0, 289) + v.trim(1405, 0)).autolevels(border_l = 500)
+
+    v = v.trim(0, 289) + \
+        v.animate(400, 599, "rot_crop", 3., 0.).trim(290, 599) +\
+        v.animate(600, 850, "rot_crop", 0., 2.4).trim(600, 1289) +\
+        v.animate(1290, 1355, "rot_crop", 2.4, 0.).trim(1290, 1355) +\
+        v.animate(1356, 1700, "rot_crop", 0., -4.4).trim(1356, 0)
+
+
     return v
 }
 
+function rot_crop(clip c, float a)
+{
+    c = c.rotate(a)
+
+    a = Abs(a/180.*Pi())
+    dh = c.width * Sin(a) * Cos(a*5) / 2.12
+    dw = dh * 16 / 9.
+    c = c.spline64Resize(c.width, c.height, dw, dh, c.width - dw*2., c.height - dh*2.)
+    return c
+
+}
 last = prepareOneAV(source_dir + "20230525_141807.mp4" + ".log", destination_dir + "20230525_141807.mp4")
 prefetch(3)

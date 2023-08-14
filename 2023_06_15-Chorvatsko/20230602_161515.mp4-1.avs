@@ -12,6 +12,12 @@ function prepareOneAV(string log, string video)
 
     v = v.width == 3840 ? v : v.spline64Resize(3840, 2160)
 
+factor = 16.
+    v = v.trim(0, 100) +\
+        v.animate(101, 105, "spline64Resize", 3840, 2160, 0, 0, 3840, 2160, 3840, 2160, 16.*factor, 9.*factor, 3840.-16.*factor*2., 2160.-9.*factor*2.).trim(101, 105) +\
+        v.trim(106, 0)
+
+
     v = v.convertToRGB32(interlaced=false, matrix="PC.709")
     v = v + v.loop(30, 0, 0).trim(0, 29)
 

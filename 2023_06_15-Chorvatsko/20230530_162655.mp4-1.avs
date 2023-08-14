@@ -7,6 +7,7 @@ LoadVirtualdubPlugin("c:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "D
 function prepareOneAV(string log, string video)
 {
     v = LSMASHVideoSource(video)
+
     fps60 = v.frameRate > 40
     v = v.assumeFPS(fps60 ? 60 : 30, 1)
 
@@ -24,6 +25,13 @@ function prepareOneAV(string log, string video)
     v = v.convertToYV24(interlaced=false, matrix="PC.709")
 
     v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+
+    m1 = 6
+    m2 = m1*2
+    v = v.rotate(1.6)
+    v = v.spline64Resize(v.width + 16*m2, v.height + 9*m2)
+    v = v.crop(16*m1, 9*m1, -16*m1, -9*m1)
+
     v = v.convertToYV12()
 
     a = LSMASHAudioSource(video, skip_priming=false).audioTrim(256./48000., 0)

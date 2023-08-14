@@ -7,6 +7,7 @@ LoadVirtualdubPlugin("c:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "D
 function prepareOneAV(string log, string video)
 {
     v = LSMASHVideoSource(video)
+
     fps60 = v.frameRate > 40
     v = v.assumeFPS(fps60 ? 60 : 30, 1)
 
@@ -31,7 +32,7 @@ function prepareOneAV(string log, string video)
     a = a.AssumeSampleRate(Round(new_rate*100.)).ResampleAudio(4800000).AssumeSampleRate(48000)
 
     v = AudioDub(v, a)
-
+    v = v.autolevels.trim(0, 552)
     return v
 }
 

@@ -7,9 +7,9 @@ LoadVirtualdubPlugin("c:\Program Files\VirtualDub\plugins64\Deshaker_64.vdf", "D
 function prepareOneAV(string log, string video)
 {
     v = LSMASHVideoSource(video)
+
     fps60 = v.frameRate > 40
     v = v.assumeFPS(fps60 ? 60 : 30, 1)
-
     v = v.width == 3840 ? v : v.spline64Resize(3840, 2160)
 
     v = v.convertToRGB32(interlaced=false, matrix="PC.709")

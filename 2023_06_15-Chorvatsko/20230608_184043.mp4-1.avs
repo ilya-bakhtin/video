@@ -23,6 +23,12 @@ function prepareOneAV(string log, string video)
     
     v = v.convertToYV24(interlaced=false, matrix="PC.709")
 
+    m1 = 4
+    m2 = m1*2
+    v = v.rotate(1.1)
+    v = v.spline64Resize(v.width + 16*m2, v.height + 9*m2)
+    v = v.crop(16*m1, 9*m1, -16*m1, -9*m1)
+
     v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
     v = v.convertToYV12()
 

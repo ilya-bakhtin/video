@@ -24,6 +24,13 @@ function prepareOneAV(string log, string video)
     v = v.convertToYV24(interlaced=false, matrix="PC.709")
 
     v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+
+    v = v.trim(0, 29) +\
+        v.trim(30, 31).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=120, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(32, 33).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=120, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(34, 35).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=180, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(36, 0)
+
     v = v.convertToYV12()
 
     a = LSMASHAudioSource(video, skip_priming=false).audioTrim(256./48000., 0)

@@ -12,6 +12,20 @@ function prepareOneAV(string log, string video)
 
     v = v.width == 3840 ? v : v.spline64Resize(3840, 2160)
 
+    v = v.trim(0, 20) +\
+        v.trim(21, 22).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=120, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(23, 24) +\
+        v.trim(25, 26).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=180, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(27, 28).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=120, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(28, 29).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=120, NewDen=1, blksize=8).assumeFPS(60).trim(1, 0) +\
+        v.trim(29, 30).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=120, NewDen=1, blksize=8).assumeFPS(60).trim(1, 0) +\
+        v.trim(31, 31) +\
+        v.trim(32, 33).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=120, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(34, 35).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=180, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(36, 49) +\
+        v.trim(50, 51).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=120, NewDen=1, blksize=8).assumeFPS(60) +\
+        v.trim(52, 0)
+
     v = v.convertToRGB32(interlaced=false, matrix="PC.709")
     v = v + v.loop(30, 0, 0).trim(0, 29)
 

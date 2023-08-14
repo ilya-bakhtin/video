@@ -32,8 +32,8 @@ function prepareOneAV(string log, string video)
 
     v = AudioDub(v, a)
 
-    return v
+    return v.turn180
 }
 
 last = prepareOneAV(source_dir + "20230526_133253.mp4" + ".log", destination_dir + "20230526_133253.mp4")
-prefetch(3)
+prefetch

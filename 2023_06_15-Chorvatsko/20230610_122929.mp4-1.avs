@@ -22,7 +22,7 @@ function prepareOneAV(string log, string video)
     v = v.Deshaker(config).trim(30, 0)
     
     v = v.convertToYV24(interlaced=false, matrix="PC.709")
-
+    v = v.rot_crop(6.)
     v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
     v = v.convertToYV12()
 
@@ -33,6 +33,18 @@ function prepareOneAV(string log, string video)
     v = AudioDub(v, a)
 
     return v
+}
+
+function rot_crop(clip c, float a)
+{
+    c = c.rotate(a)
+
+    a = a/180.*Pi()
+    dh = c.width * Sin(a) * Cos(a*5) / 2.12
+    dw = dh * 16 / 9.
+    c = c.spline64Resize(c.width, c.height, dw, dh, c.width - dw*2., c.height - dh*2.)
+    return c
+
 }
 
 last = prepareOneAV(source_dir + "20230610_122929.mp4" + ".log", destination_dir + "20230610_122929.mp4")

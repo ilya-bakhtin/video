@@ -24,6 +24,11 @@ function prepareOneAV(string log, string video)
     v = v.convertToYV24(interlaced=false, matrix="PC.709")
 
     v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+
+    start = 1100
+    gap=40.
+    v = v.animate(start + 120, start + 320, "spline64Resize", 3840, 2160, 0., 0., 3840., 2160., 3840, 2160, 16.*gap, 9.*gap, 3840.-16.*gap*2, 2160.-9.*gap*2).trim(0, start + 1049) +\
+        v.animate(start + 1050, start + 1250, "spline64Resize", 3840, 2160, 16.*gap, 9.*gap, 3840.-16.*gap*2, 2160.-9.*gap*2, 3840, 2160, 0., 0., 3840., 2160.).trim(start + 1050, 0)
     v = v.convertToYV12()
 
     a = LSMASHAudioSource(video, skip_priming=false).audioTrim(256./48000., 0)
@@ -31,6 +36,8 @@ function prepareOneAV(string log, string video)
     a = a.AssumeSampleRate(Round(new_rate*100.)).ResampleAudio(4800000).AssumeSampleRate(48000)
 
     v = AudioDub(v, a)
+
+    v = v.trim(start, start + 1250)
 
     return v
 }

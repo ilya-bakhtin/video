@@ -12,6 +12,12 @@ function prepareOneAV(string log, string video)
 
     v = v.width == 3840 ? v : v.spline64Resize(3840, 2160)
 
+    v = v.trim(0, 140) +\
+        v.trim(141, 142).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=90, NewDen=1, blksize=8).assumeFPS(30) +\
+        v.trim(143, 145) +\
+        v.trim(146, 147).FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=60, NewDen=1, blksize=8).assumeFPS(30) +\
+        v.trim(148, 0)
+
     v = v.convertToRGB32(interlaced=false, matrix="PC.709")
     v = v + v.loop(30, 0, 0).trim(0, 29)
 
@@ -23,7 +29,7 @@ function prepareOneAV(string log, string video)
     
     v = v.convertToYV24(interlaced=false, matrix="PC.709")
 
-    v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
+    v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slowest", NewNum=60, NewDen=1, blksize=8)
     v = v.convertToYV12()
 
     a = LSMASHAudioSource(video, skip_priming=false).audioTrim(256./48000., 0)

@@ -32,7 +32,7 @@ function prepareOneAV(string log, string video)
 
     v = AudioDub(v, a)
 
-    return v
+    return v.autolevels(border_l = 300)
 }
 
 last = prepareOneAV(source_dir + "20230525_151413.mp4" + ".log", destination_dir + "20230525_151413.mp4")
