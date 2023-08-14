@@ -8,13 +8,13 @@ function prepareOneAV(string name, bool "autolevels", float "sat")
     sat = Default(sat, 1.0)
 
     v = LSMASHVideoSource(destination_dir + "result\" + name + ".mp4")
-    a = LSMASHAudioSource(destination_dir + name)
-    new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
-    a = a.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+    a = LSMASHAudioSource(destination_dir + "result\" + name + ".mp4", skip_priming=false).audioTrim(256./48000., 0) # 256 samples ac3 pad
+#    new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
+#    a = a.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
 
     v = AudioDub(v, a)
 
-    return v
+    return v.trim(0, 0) # audio tail fix
 }
 
 v1 = prepareOneAV("20230525_141807.mp4")
