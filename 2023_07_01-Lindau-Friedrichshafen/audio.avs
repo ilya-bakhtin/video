@@ -341,5 +341,23 @@ new_rate = Float(a57.AudioLength)/v57.FrameCount*v57.FrameRateNumerator/v57.Fram
 a57 = a57.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
 v57 = AudioDub(v57, a57)
 
-last = v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10 + v11 + v12 + v13 + v14 + v15 + v16 + v17 + v18 + v19 + v20 + v21 + v22 + v23 + v24 + v25 + v26 + v27 + v28 + v29 + v30 + v31 + v32 + v33 + v34 + v35 + v36 + v37 + v38 + v39 + v40 + v41 + v42 + v43 + v44 + v45 + v46 + v47 + v48 + v49 + v50 + v51 + v52 + v53 + v54 + v55 + v56 + v57
+a58 = LSMASHAudioSource("M:\Media\video\2023_07_01-Lindau-Friedrichshafen\20230714_155025.mp4")
+v58 = LSMASHVideoSource("M:\Media\video\2023_07_01-Lindau-Friedrichshafen\20230714_155025.mp4").AssumeFPS(30,1)
+new_rate = Float(a58.AudioLength)/v58.FrameCount*v58.FrameRateNumerator/v58.FrameRateDenominator
+a58 = a58.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v58 = AudioDub(v58, a58)
+
+a59 = LSMASHAudioSource("M:\Media\video\2023_07_01-Lindau-Friedrichshafen\20230714_155114.mp4")
+v59 = LSMASHVideoSource("M:\Media\video\2023_07_01-Lindau-Friedrichshafen\20230714_155114.mp4").AssumeFPS(30,1)
+new_rate = Float(a59.AudioLength)/v59.FrameCount*v59.FrameRateNumerator/v59.FrameRateDenominator
+a59 = a59.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v59 = AudioDub(v59, a59)
+
+a60 = LSMASHAudioSource("M:\Media\video\2023_07_01-Lindau-Friedrichshafen\20230714_155144.mp4")
+v60 = LSMASHVideoSource("M:\Media\video\2023_07_01-Lindau-Friedrichshafen\20230714_155144.mp4").AssumeFPS(30,1)
+new_rate = Float(a60.AudioLength)/v60.FrameCount*v60.FrameRateNumerator/v60.FrameRateDenominator
+a60 = a60.AssumeSampleRate(Round(new_rate)).ResampleAudio(48000)
+v60 = AudioDub(v60, a60)
+
+last = v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10 + v11 + v12 + v13 + v14 + v15 + v16 + v17 + v18 + v19 + v20 + v21 + v22 + v23 + v24 + v25 + v26 + v27 + v28 + v29 + v30 + v31 + v32 + v33 + v34 + v35 + v36 + v37 + v38 + v39 + v40 + v41 + v42 + v43 + v44 + v45 + v46 + v47 + v48 + v49 + v50 + v51 + v52 + v53 + v54 + v55 + v56 + v57 + v58 + v59 + v60
 return last

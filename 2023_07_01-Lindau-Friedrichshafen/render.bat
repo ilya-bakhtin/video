@@ -112,3 +112,9 @@
 
 "C:\Program Files\VirtualDub\vdub64.exe" /s c:\Users\ilx\wrk\video\2023_07_01-Lindau-Friedrichshafen\20230702_163629.mp4.vdscript
 
+"C:\Program Files\VirtualDub\vdub64.exe" /s c:\Users\ilx\wrk\video\2023_07_01-Lindau-Friedrichshafen\20230714_155025.mp4.vdscript
+
+"C:\Program Files\VirtualDub\vdub64.exe" /s c:\Users\ilx\wrk\video\2023_07_01-Lindau-Friedrichshafen\20230714_155114.mp4.vdscript
+
+"C:\Program Files\VirtualDub\vdub64.exe" /s c:\Users\ilx\wrk\video\2023_07_01-Lindau-Friedrichshafen\20230714_155144.mp4.vdscript
+

@@ -112,3 +112,9 @@ call render-step.bat M:\Media\video\2023_07_01-Lindau-Friedrichshafen\ 20230702_
 
 call render-step.bat M:\Media\video\2023_07_01-Lindau-Friedrichshafen\ 20230702_163629.mp4
 
+call render-step.bat M:\Media\video\2023_07_01-Lindau-Friedrichshafen\ 20230714_155025.mp4
+
+call render-step.bat M:\Media\video\2023_07_01-Lindau-Friedrichshafen\ 20230714_155114.mp4
+
+call render-step.bat M:\Media\video\2023_07_01-Lindau-Friedrichshafen\ 20230714_155144.mp4
+
