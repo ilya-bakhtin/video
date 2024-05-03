@@ -8,6 +8,13 @@ function prepareOneAV(string log, string video)
 {
     v = LSMASHVideoSource(video)
     fps60 = v.frameRate > 40
+
+    a = BestAudioSource(video, exactsamples=true)
+# return v.audioDub(a.amplify(100)).waveform(window=0, aa=true).info # 1170 missing
+# premiere last sound at 14:44162, the end at 14:45959 - 1797 missing
+# big values starting from 1600
+#    a = a.blankClip(length = 10).audioTrim(0., -390./a.audioRate) + a # to make audio shift compatible with premiere
+
     v = v.assumeFPS(fps60 ? 60 : 30, 1)
 
     v = v.width == 3840 ? v : v.spline64Resize(3840, 2160)
@@ -25,14 +32,25 @@ function prepareOneAV(string log, string video)
 
     v = fps60 ? v : v.FrameRateConverter(Output="Flow", Preset="Slow", NewNum=60, NewDen=1, blksize=16)
     v = v.convertToYV12()
+#return v.AudioDub(a).info
+    v_duration = float(v.FrameCount)*float(v.FrameRateDenominator)/float(v.FrameRateNumerator)
+    if (float(a.audioLength)/a.audioRate < v_duration)
+    {
+        a_ex = a + blankClip(a, length = int(v.FrameCount * 24 / v.FrameRate) + 1)
+        if (float(a_ex.audioLength)/a_ex.audioRate > v_duration)
+        {
+            a = a_ex.audioTrim(0, length = v_duration)
+        }
+    }
+    else
+    {
+        new_rate = Float(a.AudioLength)/v_duration
+        a = a.AssumeSampleRate(Round(new_rate*100)).ResampleAudio(4800000).AssumeSampleRate(48000)
+    }
+#a = a.blankClip(length = 10).audioTrim(0., -1024./a.audioRate) + a
+    v = AudioDub(v, a)#.trim(0, v.FrameCount - 1)
 
-    a = LSMASHAudioSource(video, skip_priming=false).audioTrim(256./48000., 0)
-    new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
-    a = a.AssumeSampleRate(Round(new_rate*100.)).ResampleAudio(4800000).AssumeSampleRate(48000)
-
-    v = AudioDub(v, a)
-
-    return v
+    return v#.amplify(100).waveform.info
 }
 
 last = prepareOneAV(source_dir + "20240328_113523.mp4" + ".log", destination_dir + "20240328_113523.mp4")

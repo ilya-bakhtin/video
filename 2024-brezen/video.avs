@@ -1,4 +1,5 @@
-import("c:\Users\ilx\wrk\video\2024-brezen\common.avs", utf8 = true)
+#import("c:\Users\ilx\wrk\video\2024-brezen\common.avs", utf8 = true)
+import("\\192.168.1.19\c\Users\ilx\wrk\video\2024-brezen\common.avs", utf8 = true)
 
 SetFilterMTMode("Deshaker", MT_SERIALIZED)
 
@@ -9,7 +10,7 @@ function prepareOneAV(string name, bool "autolevels", float "sat")
 
     v = LSMASHVideoSource(destination_dir + "result\" + name + ".mp4")
     v = autolevels ? v.autolevels : v
-
+/*
     vo = LSMASHVideoSource(destination_dir + name)
     fps60 = vo.frameRate > 40
 
@@ -25,7 +26,23 @@ function prepareOneAV(string name, bool "autolevels", float "sat")
     {
         a = LSMASHAudioSource(destination_dir + "result\" + name + ".mp4", skip_priming=false).audioTrim(256./48000., 0) # 256 samples ac3 pad
     }
-
+*/
+    a = BestAudioSource(destination_dir + name, exactsamples=true)
+    v_duration = float(v.FrameCount)*float(v.FrameRateDenominator)/float(v.FrameRateNumerator)
+    if (float(a.audioLength)/a.audioRate < v_duration)
+    {
+        a_ex = a + blankClip(a, length = int(v.FrameCount * 24 / v.FrameRate) + 1)
+        if (float(a_ex.audioLength)/a_ex.audioRate > v_duration)
+        {
+            a = a_ex.audioTrim(0, length = v_duration)
+        }
+    }
+    else
+    {
+        new_rate = Float(a.AudioLength)/v_duration
+        a = a.AssumeSampleRate(Round(new_rate*100)).ResampleAudio(4800000).AssumeSampleRate(48000)
+    }
+   
     v = AudioDub(v, a)
     v = v.trim(0, 0) #  # audio tail fix
 
@@ -51,10 +68,13 @@ v16 = prepareOneAV("20240328_095636.mp4")
 v17 = prepareOneAV("20240328_095713.mp4")
 v18 = prepareOneAV("20240328_113412.mp4")
 v19 = prepareOneAV("20240328_113523.mp4")
+v19 = v19.trim(35, 0)
 v20 = prepareOneAV("20240328_113650.mp4")
+v20 = v20.trim(35, 0)
 v21 = prepareOneAV("20240328_113819.mp4")
 v22 = prepareOneAV("20240328_114246.mp4")
 v23 = prepareOneAV("20240328_120838.mp4")
+v23 = v23.trim(35, 0)
 v24 = prepareOneAV("20240328_120934.mp4")
 v25 = prepareOneAV("20240328_121122.mp4")
 v26 = prepareOneAV("20240328_122945.mp4")
