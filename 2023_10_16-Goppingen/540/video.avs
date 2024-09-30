@@ -1,0 +1,15 @@
+import("c:\Users\ilx\wrk\video\2023_10_16-Goppingen\540\common.avs", utf8 = true)
+
+LoadPlugin("D:\Program Files\MeGUI\tools\lsmash\LSMASHSource.dll")
+v1 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231014_201503.mp4.avi").AssumeFPS(30,1)
+v2 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231014_201545.mp4.avi").AssumeFPS(30,1)
+v3 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231015_175759.mp4.avi").AssumeFPS(30,1)
+v4 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231015_180041.mp4.avi").AssumeFPS(30,1)
+v5 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231017_162107.mp4.avi").AssumeFPS(30,1)
+v6 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231017_162159.mp4.avi").AssumeFPS(30,1)
+v7 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231017_171433.mp4.avi").AssumeFPS(30,1)
+v8 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231017_171556.mp4.avi").AssumeFPS(30,1)
+v9 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231017_171654.mp4.avi").AssumeFPS(30,1)
+v10 = LWLibavVideoSource("m:\media\video\2023_10_16-Goppingen\20231017_173019.mp4.avi").AssumeFPS(30,1)
+last = v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10
+ConvertToYV12()
