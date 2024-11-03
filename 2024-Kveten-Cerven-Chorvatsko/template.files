@@ -1,0 +1,49 @@
+SetFilterMTMode("Deshaker", MT_SERIALIZED)
+
+function prepareOneAV(string name, bool "autolevels", float "sat")
+{
+    autolevels = Default(autolevels, false)
+    sat = Default(sat, 1.0)
+
+    v = LSMASHVideoSource($$$dir_d$$$ + "result\" + name + ".mp4")
+    v = autolevels ? v.autolevels : v
+/*
+    vo = LSMASHVideoSource($$$dir_d$$$ + name)
+    fps60 = vo.frameRate > 40
+
+    a = blankClip
+
+    if ((fps60 && v.frameCount == vo.frameCount) || (v.frameCount == vo.FrameCount*2 - 1))
+    {
+        a = LSMASHAudioSource($$$dir_d$$$ + name, skip_priming=false).audioTrim(256./48000., 0) # 256 samples ac3 pad
+        new_rate = Float(a.AudioLength)/v.FrameCount*v.FrameRateNumerator/v.FrameRateDenominator
+        a = a.AssumeSampleRate(Round(new_rate*100.)).ResampleAudio(4800000).AssumeSampleRate(48000)
+    }
+    else
+    {
+        a = LSMASHAudioSource($$$dir_d$$$ + "result\" + name + ".mp4", skip_priming=false).audioTrim(256./48000., 0) # 256 samples ac3 pad
+    }
+*/
+    a = BestAudioSource($$$dir_d$$$ + name, exactsamples=true)
+    v_duration = float(v.FrameCount)*float(v.FrameRateDenominator)/float(v.FrameRateNumerator)
+    if (float(a.audioLength)/a.audioRate < v_duration)
+    {
+        a_ex = a + blankClip(a, length = int(v.FrameCount * 24 / v.FrameRate) + 1)
+        if (float(a_ex.audioLength)/a_ex.audioRate > v_duration)
+        {
+            a = a_ex.audioTrim(0, length = v_duration)
+        }
+    }
+    else
+    {
+        new_rate = Float(a.AudioLength)/v_duration
+        a = a.AssumeSampleRate(Round(new_rate*100)).ResampleAudio(4800000).AssumeSampleRate(48000)
+    }
+   
+    v = AudioDub(v, a)
+    v = v.trim(0, 0) #  # audio tail fix
+
+    return v
+}
+
+prepareOneAV($$$clip_name$$$)
